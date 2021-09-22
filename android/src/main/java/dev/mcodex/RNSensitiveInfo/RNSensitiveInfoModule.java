@@ -14,7 +14,6 @@ import android.util.Base64;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
-import androidx.biometric.BiometricConstants;
 import androidx.biometric.BiometricManager;
 import androidx.biometric.BiometricPrompt;
 import androidx.fragment.app.FragmentActivity;
@@ -59,6 +58,7 @@ import javax.crypto.spec.IvParameterSpec;
 import javax.security.auth.x500.X500Principal;
 
 import dev.mcodex.RNSensitiveInfo.utils.AppConstants;
+
 
 public class RNSensitiveInfoModule extends ReactContextBaseJavaModule {
 
@@ -344,7 +344,7 @@ public class RNSensitiveInfoModule extends ReactContextBaseJavaModule {
                             try {
                                 Activity activity = getCurrentActivity();
                                 if (activity == null) {
-                                    callback.onAuthenticationError(BiometricConstants.ERROR_CANCELED,
+                                    callback.onAuthenticationError(BiometricPrompt.ERROR_CANCELED,
                                             strings.containsKey("cancelled") ? strings.get("cancelled").toString() : "Authentication was cancelled");
                                     return;
                                 }
